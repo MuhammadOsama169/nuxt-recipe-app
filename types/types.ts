@@ -23,18 +23,3 @@ export interface RecipeResponse {
   skip: number;
   limit: number;
 }
-
-export interface ConvertKitData {
-  subscription?: {
-    id: number;
-    state: string;
-    created_at: string;
-    source: string;
-    referrer: string | null;
-    subscribable_id: number;
-    subscribable_type: string;
-    subscriber: {
-      id: number;
-    };
-  };
-}

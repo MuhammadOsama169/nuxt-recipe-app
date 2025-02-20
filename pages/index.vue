@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { type RecipeType } from "../../types";
+import { type RecipeResponse } from "@/types/types";
 
-const { data, loading, error } = await useAsyncData<RecipeType>("recipe", () =>
-  $fetch("https://dummyjson.com/recipes?limit=10&skip=10&select=name,image")
+const { data, error } = await useAsyncData<RecipeResponse>("recipe", () =>
+  $fetch("https://dummyjson.com/recipes?limit=30")
 );
 </script>
 

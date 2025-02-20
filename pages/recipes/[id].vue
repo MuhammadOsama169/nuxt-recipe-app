@@ -1,9 +1,11 @@
-<script setup>
+<script setup lang="ts">
 const { id } = useRoute().params;
+import { type Recipe } from "@/types/types";
+import { Icon } from "@iconify/vue";
 
-const { data, error } =
-  (await useFetch) < any > "https://dummyjson.com/recipes/${id}";
-
+const { data, error } = await useFetch<Recipe>(
+  `https://dummyjson.com/recipes/${id}`
+);
 // if (error.value) {
 //   throw createError({
 //     statusCode: error.value?.statusCode,
@@ -19,18 +21,21 @@ const { data, error } =
       <h2 class="text-5xl mb-4 font-semibold">{{ data?.name }}</h2>
       <div class="flex gap-4 text-xl mb-6">
         <div class="flex items-center gap-1">
-          <UIcon
-            name="i-mdi-clock-time-eight-outline"
-            class="text-dodgeroll-gold-500"
-          />
+          <Icon icon="mdi:clock" class="text-gray-500" />
           <span>{{ data?.cookTimeMinutes }}</span>
         </div>
         <div class="flex items-center gap-1">
-          <UIcon name="i-mdi-fire" class="text-dodgeroll-gold-500" />
+          <Icon
+            icon="solar:fire-bold-duotone"
+            class="text-dodgeroll-gold-500"
+          />
           <span>{{ data?.caloriesPerServing }}</span>
         </div>
         <div class="flex items-center gap-1">
-          <UIcon name="i-mdi-star" class="text-dodgeroll-gold-500" />
+          <Icon
+            icon="material-symbols:star-rounded"
+            class="text-dodgeroll-gold-500"
+          />
           <span>{{ data?.rating }} ({{ data?.reviewCount }})</span>
         </div>
       </div>

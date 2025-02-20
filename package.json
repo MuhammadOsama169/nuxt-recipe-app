@@ -17,5 +17,8 @@
     "nuxt": "^3.15.4",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@iconify/vue": "^4.3.0"
   }
 }

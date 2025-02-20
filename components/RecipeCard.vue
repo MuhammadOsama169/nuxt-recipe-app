@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type Recipe } from "../../types/types";
+import { type Recipe } from "@/types/types";
+import { Icon } from "@iconify/vue";
 
 defineProps<{
   recipe: Recipe;
@@ -22,28 +23,30 @@ defineProps<{
         class="font-normal w-full bg-white/80 flex gap-8 text-lg lg:text-xl mb-4 mt-auto"
       >
         <div class="flex items-center gap-1">
-          <UIcon
-            name="i-mdi-clock-time-eight-outline"
-            class="text-dodgeroll-gold-500"
-          />
+          <Icon icon="mdi:clock" class="text-gray-500" />
           <span>{{ recipe.cookTimeMinutes }}</span>
         </div>
         <div class="flex items-center gap-1">
-          <UIcon name="i-mdi-fire" class="text-dodgeroll-gold-500" />
+          <Icon
+            icon="solar:fire-bold-duotone"
+            class="text-dodgeroll-gold-500"
+          />
           <span>{{ recipe.caloriesPerServing }}</span>
         </div>
         <div class="flex items-center gap-1">
-          <UIcon name="i-mdi-star" class="text-dodgeroll-gold-500" />
+          <Icon
+            icon="material-symbols:star-rounded"
+            class="text-dodgeroll-gold-500"
+          />
           <span>{{ recipe.rating }} ({{ recipe.reviewCount }})</span>
         </div>
       </div>
-      <UButton
-        :ui="{
-          base: 'self-start',
-        }"
+      <NuxtLink
         :to="`/recipes/${recipe.id}`"
-        label="View"
-      />
+        class="px-4 py-2 text-white bg-dodgeroll-gold-500 rounded-md w-[100px] flex justify-center"
+      >
+        View
+      </NuxtLink>
     </div>
   </div>
 </template>
